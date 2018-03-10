@@ -11,6 +11,18 @@ class HomeController < ApplicationController
   end
 
   def lookup
+    index
     @symbol = params[:sym]
+    if @symbol
+      @symbol = @symbol.upcase
+      for coin in @coins
+        if @symbol == coin["symbol"]
+          c = coin["symbol"]
+        end
+      end
+      if @symbol != c
+        @symbol = "Wrong symbol!"
+      end
+    end
   end
 end
