@@ -9,4 +9,8 @@ class HomeController < ApplicationController
 
   def about
   end
+
+  def lookup
+    @symbol = params[:sym]
+  end
 end
