@@ -3,4 +3,9 @@
   <%= submit_tag 'Lookup Stock Quote' %>
 <% end %>
 <br /> <br />
-<%= @symbol %>
+<% if @symbol == "Wrong symbol!" || @symbol == "You didn't write anything!" %>
+  <%= @symbol %>
+<% elsif @symbol %>
+  <%= @symbol %>: <%= @price_usd %><br />
+  Rank: <%= @rank %>
+<% end %>

@@ -15,12 +15,17 @@ class HomeController < ApplicationController
     @symbol = params[:sym]
     if @symbol
       @symbol = @symbol.upcase
+      c = @coins[1]
       for coin in @coins
         if @symbol == coin["symbol"]
-          c = coin["symbol"]
+          c = coin
+          @rank = c["rank"]
+          @price_usd = c["price_usd"]
         end
       end
-      if @symbol != c
+      if @symbol == ""
+        @symbol = "You didn't write anything!"
+      elsif @symbol != c["symbol"]
         @symbol = "Wrong symbol!"
       end
     end
