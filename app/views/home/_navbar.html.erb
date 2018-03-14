@@ -23,7 +23,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-              <li><a href="#">Another action</a></li>
+              <li><%= link_to 'Add crypto', new_crypto_path %></li>
+              <li><%= link_to 'View your cryptos', cryptos_path %></li>
             </ul>
           </li>
           <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
