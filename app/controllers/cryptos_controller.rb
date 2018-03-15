@@ -1,6 +1,7 @@
 class CryptosController < ApplicationController
   before_action :set_crypto, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :correct_user, except: [:index, :new, :create]
   # GET /cryptos
   # GET /cryptos.json
   def index
@@ -70,5 +71,10 @@ class CryptosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def crypto_params
       params.require(:crypto).permit(:symbol, :user_id, :cost_per, :amount_owned)
+    end
+
+    def correct_user
+      @correct = current_user.cryptos.find_by(id: params[:id])
+      redirect_to cryptos_path, notice: "Not authorized to edit this entry" if @correct.nil?
     end
 end
