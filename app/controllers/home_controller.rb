@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @url = 'https://api.coinmarketcap.com/v1/ticker/'
-    @uri = URI(@url)
-    @response = Net::HTTP.get(@uri)
-    @coins = JSON.parse(@response)
+    api_connect
     @my_coins = ['BTC', 'ETH', 'XRP', 'STEEM']
   end
 
@@ -11,7 +8,7 @@ class HomeController < ApplicationController
   end
 
   def lookup
-    index
+    api_connect
     @symbol = params[:sym]
     if @symbol
       @symbol = @symbol.upcase

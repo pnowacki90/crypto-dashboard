@@ -7,8 +7,6 @@ class CryptosController < ApplicationController
   def index
     @cryptos = Crypto.all
     api_connect
-
-
   end
 
   # GET /cryptos/1
@@ -81,10 +79,4 @@ class CryptosController < ApplicationController
       redirect_to cryptos_path, notice: "Not authorized to edit this entry" if @correct.nil?
     end
 
-    def api_connect
-      @url = 'https://api.coinmarketcap.com/v1/ticker/'
-      @uri = URI(@url)
-      @response = Net::HTTP.get(@uri)
-      @coins = JSON.parse(@response)
-    end
 end
