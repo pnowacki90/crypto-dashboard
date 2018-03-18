@@ -6,8 +6,9 @@
         %th Name
         %th Symbol
         %th Cost per
+        %th Current price
         %th Amount owned
-        %th{:colspan => 3}
+        %th Total value
     %tbody
       - @cryptos.each do |crypto|
         - if crypto.user_id == current_user.id
@@ -16,12 +17,11 @@
           - for x in @coins
             - if crypto.symbol == x["symbol"]
               %tr
-                %td= x["name"]
+                %td= link_to x["name"], crypto
                 %td= crypto.symbol
-                %td= crypto.cost_per
+                %td= number_to_currency(crypto.cost_per)
+                %td $#{x["price_usd"]}
                 %td= crypto.amount_owned
-                %td= link_to 'Show', crypto
-                %td= link_to 'Edit', edit_crypto_path(crypto)
-                %td= link_to 'Destroy', crypto, method: :delete, data: { confirm: 'Are you sure?' }
+                %td= number_to_currency(x["price_usd"].to_d * crypto.amount_owned)
 <br />
 = link_to 'New Crypto', new_crypto_path, class: "btn btn-primary"
