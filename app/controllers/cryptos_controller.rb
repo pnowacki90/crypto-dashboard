@@ -27,15 +27,21 @@ class CryptosController < ApplicationController
   # POST /cryptos.json
   def create
     @crypto = Crypto.new(crypto_params)
-
-    respond_to do |format|
-      if @crypto.save
-        format.html { redirect_to @crypto, notice: 'Crypto was successfully created.' }
-        format.json { render :show, status: :created, location: @crypto }
-      else
-        format.html { render :new }
-        format.json { render json: @crypto.errors, status: :unprocessable_entity }
+    api_connect
+    symbol = coin_validation(@crypto.symbol)
+    if symbol == @crypto.symbol.upcase
+      respond_to do |format|
+        if @crypto.save
+          format.html { redirect_to @crypto, notice: 'Crypto was successfully created.' }
+          format.json { render :show, status: :created, location: @crypto }
+        else
+          format.html { render :new }
+          format.json { render json: @crypto.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash.now[:error] = symbol
+      render action: 'new'
     end
   end
 

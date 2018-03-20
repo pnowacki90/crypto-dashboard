@@ -3,7 +3,22 @@
 
 
 <br /><br />
-- for x in @coins
-  - for coin in @my_coins
-    - if coin == x["symbol"]
-      %p= "#{x["name"]}: $#{x["price_usd"]}"
+%div.table_responsive
+  %table.table
+    %thead
+      %tr
+        %th #
+        %th Symbol
+        %th Name
+        %th Market cap
+        %th Current price
+        %th Change(24h)
+    %tbody
+      - for x in @coins
+        %tr
+          %td= x["rank"]
+          %td= x["symbol"]
+          %td= x["name"]
+          %td= number_to_currency(x["market_cap_usd"])
+          %td $#{x["price_usd"]}
+          %td #{x["percent_change_24h"]}%
