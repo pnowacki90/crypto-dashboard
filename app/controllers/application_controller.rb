@@ -8,23 +8,28 @@ class ApplicationController < ActionController::Base
     @coins = JSON.parse(@response)
   end
 
-  def coin_validation(coin_symbol)
-    if coin_symbol
-      coin_symbol = coin_symbol.upcase
-      c = @coins[1]
-      for coin in @coins
-        if coin_symbol == coin["symbol"]
-          c = coin
-          @rank = c["rank"]
-          @price_usd = c["price_usd"]
-        end
-      end
-      if coin_symbol == ""
-        coin_symbol = "You didn't write anything!"
-      elsif coin_symbol != c["symbol"]
-        coin_symbol = "Wrong symbol!"
+  def find_coin_data(coin_symbol1)
+    c = @coins[1]
+    for coin in @coins
+      if coin_symbol1 == coin["symbol"]
+        c = coin
+        @name = c["name"]
+        @rank = c["rank"]
+        @price_usd = c["price_usd"]
       end
     end
-    return coin_symbol
+  end
+
+  def coin_validation(coin_symbol2)
+    if coin_symbol2
+      coin_symbol2 = coin_symbol2.upcase
+      find_coin_data(coin_symbol2)
+      if coin_symbol2 == ""
+        coin_symbol2 = "You didn't write anything!"
+      elsif coin_symbol2 != c["symbol"]
+        coin_symbol2 = "Wrong symbol!"
+      end
+    end
+    return coin_symbol2
   end
 end

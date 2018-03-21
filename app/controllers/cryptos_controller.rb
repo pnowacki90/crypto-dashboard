@@ -2,17 +2,18 @@ class CryptosController < ApplicationController
   before_action :set_crypto, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :correct_user, except: [:index, :new, :create]
+  before_action :api_connect, except: [:destroy, :new]
   # GET /cryptos
   # GET /cryptos.json
   def index
     @cryptos = Crypto.all
-    api_connect
     @profit = 0
   end
 
   # GET /cryptos/1
   # GET /cryptos/1.json
   def show
+    find_coin_data(@crypto.symbol)
   end
 
   # GET /cryptos/new
@@ -22,13 +23,13 @@ class CryptosController < ApplicationController
 
   # GET /cryptos/1/edit
   def edit
+    find_coin_data(@crypto.symbol)
   end
 
   # POST /cryptos
   # POST /cryptos.json
   def create
     @crypto = Crypto.new(crypto_params)
-    api_connect
     symbol = coin_validation(@crypto.symbol)
     if symbol == @crypto.symbol.upcase
       respond_to do |format|
@@ -85,5 +86,6 @@ class CryptosController < ApplicationController
       @correct = current_user.cryptos.find_by(id: params[:id])
       redirect_to cryptos_path, notice: "Not authorized to edit this entry" if @correct.nil?
     end
+
 
 end

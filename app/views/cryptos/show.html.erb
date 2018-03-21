@@ -1,7 +1,7 @@
 <div class="col-md-6 col-md-offset-3">
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Panel title</h3>
+    <h3 class="panel-title"><%= @name %> | Rank: <%= @rank %> | Current price: $<%= @price_usd %></h3>
   </div>
   <div class="panel-body">
     <p>
@@ -10,8 +10,8 @@
     </p>
 
     <p>
-      <strong>Cost per:</strong>
-      <%= @crypto.cost_per %>
+      <strong>Bougth per:</strong>
+      $<%= @crypto.cost_per %>
     </p>
 
     <p>
@@ -19,10 +19,10 @@
       <%= @crypto.amount_owned %>
     </p>
   </div>
-  <div class="panel-footer center">
-    <%= link_to 'Edit', edit_crypto_path(@crypto) %> |
-    <%= link_to 'Back', cryptos_path %> |
-    <%= link_to 'Destroy', @crypto, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <div class="panel-footer">
+    <%= link_to 'Edit', edit_crypto_path(@crypto), class: "btn btn-warning" %> |
+    <%= link_to 'Back', cryptos_path, class: "btn btn-default" %> |
+    <%= link_to 'Destroy', @crypto, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
   </div>
 </div>
 </div>
