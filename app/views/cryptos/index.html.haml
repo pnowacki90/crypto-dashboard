@@ -5,10 +5,13 @@
       %tr
         %th Name
         %th Symbol
-        %th Cost per
-        %th Current price
         %th Amount owned
+        %th Cost Paid per
+        %th Current price
+        %th Total paid
         %th Total value
+        %th Profit / Loss
+        %th %Difference
     %tbody
       - @cryptos.each do |crypto|
         - if crypto.user_id == current_user.id
@@ -19,9 +22,17 @@
               %tr
                 %td= link_to x["name"], crypto
                 %td= crypto.symbol
+                %td= crypto.amount_owned
                 %td= number_to_currency(crypto.cost_per)
                 %td $#{x["price_usd"]}
-                %td= crypto.amount_owned
+                %td= number_to_currency(crypto.amount_owned * crypto.cost_per)
                 %td= number_to_currency(x["price_usd"].to_d * crypto.amount_owned)
+                %td= number_to_currency((x["price_usd"].to_d * crypto.amount_owned) - (crypto.cost_per * crypto.amount_owned))
+                %td= number_to_percentage((x["price_usd"].to_d / crypto.cost_per)*100-100)
+                - @profit = @profit + ((x["price_usd"].to_d * crypto.amount_owned) - (crypto.cost_per * crypto.amount_owned))
+      %tr
+        %td{:colspan => 7}
+        %td= number_to_currency(@profit)
+        %td
 <br />
 = link_to 'New Crypto', new_crypto_path, class: "btn btn-primary"

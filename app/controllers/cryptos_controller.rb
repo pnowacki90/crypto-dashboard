@@ -7,6 +7,7 @@ class CryptosController < ApplicationController
   def index
     @cryptos = Crypto.all
     api_connect
+    @profit = 0
   end
 
   # GET /cryptos/1

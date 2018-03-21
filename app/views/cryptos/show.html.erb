@@ -1,24 +1,28 @@
+<div class="col-md-6 col-md-offset-3">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Panel title</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      <strong>Symbol:</strong>
+      <%= @crypto.symbol %>
+    </p>
 
-<p>
-  <strong>Symbol:</strong>
-  <%= @crypto.symbol %>
-</p>
-<!--
-<p>
-  <strong>User:</strong>
-  <%= @crypto.user_id %>
-</p>
--->
-<p>
-  <strong>Cost per:</strong>
-  <%= @crypto.cost_per %>
-</p>
+    <p>
+      <strong>Cost per:</strong>
+      <%= @crypto.cost_per %>
+    </p>
 
-<p>
-  <strong>Amount owned:</strong>
-  <%= @crypto.amount_owned %>
-</p>
-
-<%= link_to 'Edit', edit_crypto_path(@crypto) %> |
-<%= link_to 'Back', cryptos_path %> | 
-<%= link_to 'Destroy', @crypto, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <p>
+      <strong>Amount owned:</strong>
+      <%= @crypto.amount_owned %>
+    </p>
+  </div>
+  <div class="panel-footer center">
+    <%= link_to 'Edit', edit_crypto_path(@crypto) %> |
+    <%= link_to 'Back', cryptos_path %> |
+    <%= link_to 'Destroy', @crypto, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
+</div>
