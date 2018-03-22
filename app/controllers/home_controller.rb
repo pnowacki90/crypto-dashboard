@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @url = 'https://api.coinmarketcap.com/v1/ticker/'
-    @uri = URI(@url)
-    @response = Net::HTTP.get(@uri)
-    @coins = JSON.parse(@response)
+    api_connect
   end
 
   def about

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def api_connect
+    require 'net/http'
     @url = 'https://api.coinmarketcap.com/v1/ticker/'
     @uri = URI(@url)
     @response = Net::HTTP.get(@uri)
