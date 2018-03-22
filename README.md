@@ -1,24 +1,7 @@
-# README
+About this website
+This is a simple app which lets you create an account and manage your cryptocurrency.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- App takes data from coinmarketcap.com API
+- User management is done with devise gem
+- Styling done with bootstrap 3.3.7
+- Index pages and /home/about page uses HAML instead of HTML
