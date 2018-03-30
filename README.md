@@ -7,4 +7,4 @@ This is a simple app which lets you create an account and manage your cryptocurr
 - Styling done with bootstrap 3.3.7
 - Index pages and /home/about page uses HAML instead of HTML
 
-A live app is available at [Crypto Dashboard](http://crypto-coin-dashboard.herokuapp.com)
+A live app is available at [Crypto Dashboard](http://crypto23.herokuapp.com)
