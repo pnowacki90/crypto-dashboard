@@ -1,6 +1,8 @@
 <%= form_tag home_lookup_path, :method => 'POST' do %>
-  <%= text_field_tag 'sym', nil, placeholder: 'Enter Crypto Symbol', size: 50 %>
-  <%= submit_tag 'Lookup Stock Quote' %>
+  <div class="mdl-textfield mdl-js-textfield">
+    <%= text_field_tag 'sym', nil, placeholder: 'Enter Crypto Symbol', size: 50, class: "mdl-textfield__input" %>
+  </div>
+  <%= submit_tag 'Lookup Stock Quote', class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored' %>
 <% end %>
 <br /> <br />
 <% if @symbol == "Wrong symbol!" || @symbol == "You didn't write anything!" %>

@@ -1,10 +1,10 @@
 
 <br /><br />
-%div.table_responsive
+%div.mdl-data-table.mdl-js-data-table
   %table.table
     %thead
       %tr
-        %th #
+        %th.mdl-data-table__cell--non-numeric #
         %th Symbol
         %th Name
         %th Market cap
@@ -13,7 +13,7 @@
     %tbody
       - for x in @coins
         %tr
-          %td= x["rank"]
+          %td.mdl-data-table__cell--non-numeric= x["rank"]
           %td= x["symbol"]
           %td= x["name"]
           %td= number_to_currency(x["market_cap_usd"])
