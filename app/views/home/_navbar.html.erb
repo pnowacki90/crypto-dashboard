@@ -27,10 +27,22 @@
               <li><%= link_to 'View your cryptos', cryptos_path %></li>
             </ul>
           </li>
-          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <span class="glyphicon glyphicon-log-out"></span> Log out
+            <% end %>
+          </li>
         <% else %>
-          <li><%= link_to 'Sign up', new_user_registration_path %></li>
-          <li><%= link_to 'Log in', new_user_session_path %></li>
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <span class="glyphicon glyphicon-user"></span> Sign up
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path do %>
+              <span class="glyphicon glyphicon-log-in"></span> Log in
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
