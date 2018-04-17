@@ -1,7 +1,13 @@
 
 <br /><br />
+%br/
+%form.col-md-offset-4{ :action => "#" }
+  %div
+    %input#myInput{ :type => "text", :onkeyup => "myFunction()", :title => "Type in a name" }
+    %label{ :for => "myInput" } Search for name or symbol...
+%br/
 %div.table_responsive
-  %table.table
+  %table.table#myTable
     %thead
       %tr
         %th #
