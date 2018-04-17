@@ -1,4 +1,4 @@
-<%= form_with(model: crypto, local: true) do |form| %>
+<%= form_with(model: crypto, local: true, class: "form-horizontal") do |form| %>
   <% if crypto.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(crypto.errors.count, "error") %> prohibited this crypto from being saved:</h2>
@@ -11,26 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
+    <%= form.number_field :user_id, id: :crypto_user_id, value: current_user.id, type: "hidden", class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
     <%= form.label :symbol %>
-    <%= form.text_field :symbol, id: :crypto_symbol %>
+    <%= form.text_field :symbol, id: :crypto_symbol, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.number_field :user_id, id: :crypto_user_id, value: current_user.id, type: "hidden" %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :cost_per %>
-    <%= form.text_field :cost_per, id: :crypto_cost_per %>
+    <div class="input-group">
+      <div class="input-group-addon">$</div>
+      <%= form.text_field :cost_per, id: :crypto_cost_per, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :amount_owned %>
-    <%= form.text_field :amount_owned, id: :crypto_amount_owned %>
+    <%= form.text_field :amount_owned, id: :crypto_amount_owned, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit :class => "btn btn-primary" %>
   </div>
 <% end %>

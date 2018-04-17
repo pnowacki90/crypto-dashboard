@@ -1,10 +1,10 @@
 
 <br /><br />
 %br/
-%form.col-md-offset-4{ :action => "#" }
-  %div
-    %input#myInput{ :type => "text", :onkeyup => "myFunction()", :title => "Type in a name" }
-    %label{ :for => "myInput" } Search for name or symbol...
+%form.col-md-offset-4.col-md-4{ :action => "#" }
+  %div.form-group
+    %input#myInput.form-control{ :type => "text", :onkeyup => "myFunction()",
+      :title => "Type in a name", :placeholder => "Search for name or symbol..." }
 %br/
 %div.table_responsive
   %table.table#myTable
